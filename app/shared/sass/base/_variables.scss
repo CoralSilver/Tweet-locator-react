@@ -1,0 +1,122 @@
+//base/_variables.scss
+
+// Variables
+//
+// Styleguide 1.2
+
+// Typography
+//-- typo:start --//
+$base-font-family: 'Open Sans', sans-serif;; // Regular: 400 , Semi-bold: 600, Bold: 700
+$heading-font-family: $base-font-family;
+$semibold: 600;
+$bold: 700;
+
+// Font Sizes
+$base-font-size: 100%;
+
+// Line height
+$base-line-height: 1.5;
+$heading-line-height: 1.3;
+//-- typo:end --//
+
+// Other Sizes
+$base-spacing: $base-line-height * 1em;
+$small-spacing: $base-spacing / 2.25;
+$base-z-index: 0;
+
+
+// Colors
+//
+// markup:
+// <div style="background: {$modifiers};" className="styleguide-color">{$modifiers}</div>
+//
+// $white            - white
+// $base-background-color - base background color $white
+// $background-light-gray - just slightly darker than base background color
+// $white-gray       - white gray
+// $light-gray       - light gray
+// $medium-gray      - medium gray
+// $dark-gray        - dark gray
+// $footer-gray      - gray in the footer
+// $purple           - purple
+// $light-teal       - light teal for backgrounds
+// $teal             - teal
+// $dull-yellow      - dull yellow for accent
+// $lemon-yellow     - light yellow
+// $beige            - beige for backgrounds
+// $black            - black
+// $action-color     -  action color, used for links and default button
+// $alert            - background color for alerts, used with white text
+// $error            - error message color, brighter red than alert, used for font color
+// $error-background - background color for use with error messages
+// $success          - success color
+//
+// Styleguide 1.2.1
+//-- colors:start --//
+$white: #fff;
+$black: #333;
+$base-background-color: #63b0e5;
+$base-background-color-light: #f9faf6;
+$action-color: #1955a5;
+$action-color-hover: #edf1f8;
+$table-header-color: #f7fafa;
+$gray: #8e959e;
+$light-gray: #cfcdcd;
+$dark-gray: #717171;
+$yellow: #fff0c2;
+
+
+$light-teal: #E9F0EF;
+$teal: #4A7B71;
+$action-color-light:#4171b1;
+$action-color-dark: #B35300;
+$alert: #B14F4E;
+$error: #D0021B;
+$error-background: #FCE9E7;
+$success: #4b850c;
+$lightest-purple: #e8eaf2;
+$light-purple: lighten(#dedfee, 1%);
+$light-pink: #fff3f0;
+$medium-blue: #dbe9f9;
+$light-blue: #ecf3fc;
+$dull-yellow: #ecba66;
+$lemon-yellow: #fff8ed;
+$beige: #f9f6f0;
+
+
+// Base Font Colors
+//
+// markup:
+// <div style="background: {$modifiers};" className="styleguide-color">{$modifiers}</div>
+//
+// $base-font-color     - base body font color
+// $base-heading-color  - base heading color
+//
+// Styleguide 1.2.2
+
+// Font Colors
+$base-font-color: $black;
+$base-heading-color: $action-color;
+//-- colors:end --//
+
+// Base Border/Table Variables
+//
+// markup:
+// <div style="border: {$modifiers};">{$modifiers}</div>
+//
+// $base-border-color     - base border color
+// $base-border-darker     - base border color
+// $base-table-color      - base table color
+//
+// Styleguide 1.2.3
+
+// Border
+$base-border-radius: 2px;
+$base-border-color: $light-gray;
+//$base-table-hover: $white-gray;
+$base-border: 1px solid $base-border-color;
+$base-border-darker: 1px solid darken($base-border-color, 10%);
+$base-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);;
+
+
+$base-table-color: $white;

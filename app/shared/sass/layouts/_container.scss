@@ -1,0 +1,136 @@
+//layout/_container.scss
+
+// Containers
+//
+//  The ```.container``` class is applied to restrict the
+//  max-width of an element, usually a bit of content.
+//  It also includes right and left padding.
+//
+//  Top and bottom padding are applied with a .section element
+//  from layout/_section.scss used as a wrapper div
+//
+//  Often, you will place a ```.container``` div within another
+//  element that has a background color. This gives you
+//  a full-bleed background, but the content is contained
+//  within the max-width.
+//
+//  markup:
+//  <div className="section section-light-teal">
+//    <div className="container">
+//      <p>Your content goes here... </p>
+//    </div>
+//  </div>
+
+
+// Base Container
+//
+// markup:
+//  <div className="container">
+//  <p>You can view upcoming tests that have been scheduled through our old process by accessing the ​<b>Tests Scheduled by Date</b> report from the View Reports page.</p></div>
+
+
+//Set the default container max-width
+$max-width: em(1400);
+
+.container {
+  @include container($max-width);
+  &--mobile-wider {
+    @include breakpoint($small-screen-down) {
+      padding: 0 0.25*$base-spacing;
+    }
+  }
+}
+
+// Medium width container
+//
+// markup:
+//  <div className="container-medium-width">
+// <p>You can view upcoming tests that have been scheduled through our old process by accessing the ​<b>Tests Scheduled by Date</b> report from the View Reports page.</p></div>
+
+
+.container-medium-width {
+ @include container(970px);
+}
+
+.container-medium-narrow-width {
+ @include container(850px);
+}
+
+// Narrow width container
+//
+// markup:
+//  <div className="container-narrow">
+// <p>You can view upcoming tests that have been scheduled through our old process by accessing the ​<b>Tests Scheduled by Date</b> report from the <a [routerLink]="['/Reports']">View Reports</a> page.
+//  </div>
+//
+// Styleguide 4.2.3
+
+.container-narrow {
+ @include container(750px);
+}
+
+// Full width container
+//
+// markup:
+//  <div className="container-full-width">
+// <p>You can view upcoming tests that have been scheduled through our old process by accessing the ​<b>Tests Scheduled by Date</b> report from the <a [routerLink]="['/Reports']">View Reports</a> page.
+// </div>
+//
+// Styleguide 4.2.4
+
+.container-full-width {
+ @include container(100%);
+}
+
+// Base container without padding
+//
+// markup:
+//  <div className="container-no-pad">
+// <p>You can view upcoming tests that have been scheduled through our old process by accessing the ​<b>Tests Scheduled by Date</b> report from the <a [routerLink]="['/Reports']">View Reports</a> page.
+//  </div>
+//
+// Styleguide 4.2.5
+
+.container-no-pad {
+  @include container();
+}
+
+// Medium width container without padding
+//
+// markup:
+//  <div className="container-medium-width-no-pad">
+// <p>You can view upcoming tests that have been scheduled through our old process by accessing the ​<b>Tests Scheduled by Date</b> report from the <a [routerLink]="['/Reports']">View Reports</a> page.
+// </div>
+//
+// Styleguide 4.2.6
+.container-medium-width-no-pad {
+  @include container(970px);
+}
+
+
+// Layout
+//
+// Styleguide 4.0
+
+// Callout container
+//
+// A container for important messages.  It should always use ```.text-larger``` class for consistency. Also, if the last element is a paragraph,
+// ```.no-margin-bottom``` class should be added to it so content is evenly spaced vertically within the container.
+//
+// markup:
+//  <div className="container-medium-width thin-section">
+//    <div className="section section-beige container-dull-yellow-top text-larger">
+//        <p><strong>Please note:</strong> All upcoming tests scheduled through our new process will appear on this page.
+//            However, there may still be upcoming tests for your school that have been scheduled through our old process.
+//            <a href="home.html">Home page</a>.
+//        </p>
+//    </div>
+// </div>
+//
+// Styleguide 4.1
+
+
+.container-bordered {
+  border: $base-border;
+  border-radius: $base-border-radius;
+}

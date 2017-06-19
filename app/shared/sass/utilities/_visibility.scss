@@ -1,0 +1,136 @@
+// utilities/_visibility.scss
+
+// Utility state classes to hidden things in different ways
+
+// Visibility Classes
+//
+// markup:
+// <button className="button {$modifiers}">{$modifiers}</button>
+//
+// .hidden        - hides element with display: none !important.  Remove class with JS to show element.
+// .invisible     - sets element to visibility: hidden
+// .fade.in       - classes can be used together to set opacity to 1.  With just .fade class, opacity is set to 0 with transition
+// .screen-reader-only - visually hides content, but make it still accessible to screen readers
+// .sr-only-focusable  - Use in conjunction with .screen-reader-only to only display content when it's focused.
+// Useful for "Skip to main content" links;
+//
+// Styleguide 1.8.1.
+
+.hidden {
+  display: none !important;
+}
+
+.invisible {
+  visibility: hidden !important;
+}
+
+.fade {
+  opacity: 0;
+  transition: opacity .25s linear;
+  &.in {
+  opacity: 1;
+  }
+}
+
+// Only display content to screen readers
+//
+// See: http://a11yproject.com/posts/how-to-hidden-content/
+
+.screen-reader-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+// Use in conjunction with .screen-reader-only to only display content when it's focused.
+// Useful for "Skip to main content" links; see http://www.w3.org/TR/2013/NOTE-WCAG20-TECHS-20130905/G1
+// Credit: HTML5 Boilerplate
+
+.sr-only-focusable {
+  &:active,
+  &:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+  }
+}
+
+//$extra-small-screen-down: max-width em(414);
+//$small-phone-screen-down: max-width em(550);
+//$small-screen-down: max-width em(767);
+//$medium-screen-down: max-width em(991);
+//$large-screen-down: max-width em(1199);
+//$x-large-screen-down: max-width em(1280);
+
+//min-width media queries
+//$extra-small-screen-up: em(415);
+//$small-phone-screen-up: em(551);
+//$small-screen-up: em(768);
+//$medium-screen-up: em(992);
+//$large-screen-up: em(1200);
+
+// Hide based on breakpoint classes
+//
+// markup:
+// <button className="button {$modifiers}">{$modifiers}</button>
+//
+// .hidden-extra-small-up   - Hidden at 415px up
+// .hidden-small-phone-up   - Hidden at 551px up
+// .hidden-small-up         - Hidden at 768px up
+// .hidden-extra-small-down - Hidden at 414px down
+// .hidden-small-phone-down  - Hidden at 550px down
+// .hidden-small-down       - Hidden at 768px down
+// .hidden-medium-down      - Hidden at 991px down
+//
+// Styleguide 1.8.2.
+
+.hidden-extra-small-up {  //415px
+  @include breakpoint($extra-small-screen-up) {
+    display: none !important;
+  }
+}
+
+.hidden-small-phone-up { //551px
+  @include breakpoint($small-phone-screen-up) {
+    display: none !important;
+  }
+}
+
+.hidden-small-up { //768px
+  @include breakpoint($small-screen-up) {
+    display: none !important;
+  }
+}
+
+.hidden-extra-small-down { //414px
+  @include breakpoint($extra-small-screen-down) {
+    display: none !important;
+  }
+}
+
+.hidden-small-phone-down { //550px
+  @include breakpoint($small-phone-screen-down) {
+    display: none !important;
+  }
+}
+
+.hidden-small-down { //767px
+  @include breakpoint($small-screen-down) {
+    display: none !important;
+  }
+}
+
+//991px
+.hidden-medium-down {
+  @include breakpoint($medium-screen-down) {
+    display: none !important;
+  }
+}

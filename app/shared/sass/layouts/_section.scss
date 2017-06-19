@@ -1,0 +1,153 @@
+//  layouts/_section.scss
+
+// Sections
+//
+//  Sections contain sections of content with padding on the top and bottom.
+//  Colored sections only add a background color. They should be used with another section class that adds padding.
+//
+//  Note: The ```<section>``` element is not meant to be used for styling per the spec--
+//  see http://html5doctor.com/avoiding-common-html5-mistakes/
+//  and http://www.w3.org/TR/html5/sections.html#the-section-element for more info
+//  "The section element is not a generic container element.
+//   When an element is needed only for styling purposes or as a convenience for scripting,
+//   authors are encouraged to use the div element instead."
+//
+//
+//Real color names are used here as background color is not tied
+//to any action or content, and using a real color is easier to remember
+// while coding than "brand-complimentary" for instance.
+//
+//If the design changes drastically and the brand color changes
+//from, let's say, blue to green, just do a global
+//find/replace - that's what text editors are for.
+
+
+// Section styles
+//
+// markup:
+// <div className="section {$modifiers}">
+// <p>You can view upcoming tests that have been scheduled through our old process by accessing the ​<b>Tests Scheduled by Date</b>
+// report from the View Reports page.</p>
+// </div>
+//
+// .section       - Base section style with bottom padding.  Use with ```.container``` classes to control width.
+
+.section {
+  @extend .clearfix;
+
+  padding: {
+    top: $base-spacing;
+    bottom: $base-spacing;
+  }
+
+  &--white {
+    background: #fff;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+    padding: $base-spacing;
+    margin-bottom: $base-spacing;
+  }
+
+  &--no-spacing {
+    padding: 0;
+  }
+
+  &__title {
+    font-size: em(20);
+    font-weight: $bold;
+    margin-bottom: 1em;
+  }
+
+  &__side {
+    flex: 0 0 20%;
+    max-width: 20%;
+
+  }
+
+  &__content {
+    flex: 0 0 80%;
+    max-width: 80%;
+    margin-left: $base-spacing;
+    &--white {
+      background-color: $white;
+    }
+  }
+
+  & + &--details {
+    margin-top: -$base-spacing;
+    margin-bottom: $base-spacing;
+  }
+
+  &--details {
+    $border-color: #E3E3E3;
+    $border-width: 5px;
+    background: #F9F9F6;
+    border-top: $border-width solid $border-color;
+    padding: $base-spacing;
+    position: relative;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+
+    &--wide {
+      padding: ($base-spacing * 2) 0 $base-spacing;
+    }
+
+    &:before {
+      $size: 40px;
+      background: #fff;
+      position: absolute;
+      top: -$size / 2 - 1px;
+      left: 50%;
+      margin-left: - $size / 2;
+      display: block;
+      content: '';
+      width: $size;
+      height: $size;
+      border: $border-width solid $border-color;
+      border-left: none;
+      border-bottom: none;
+      transform: rotate(135deg);
+    }
+  }
+
+}
+
+// to use with tables or any other time content should go to edge of container
+// use 'section container' classes for any content inside that should have padding
+.section-outer-white {
+  background: #fff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  margin-bottom: $base-spacing;
+}
+
+.section-tall {
+  padding: {
+    top: 2*$base-spacing;
+    bottom: 2*$base-spacing;
+  }
+  @include breakpoint($small-screen-down) {
+    padding {
+      top: $base-spacing;
+      bottom: $base-spacing;
+    }
+  }
+}
+
+.section-bottom {
+  padding-bottom: $base-spacing;
+}
+
+.section-thin {
+  padding: {
+    top: $base-spacing /2;;
+    bottom: $base-spacing /2;;
+  }
+}
+
+.section--base-color {
+  background-color: $base-background-color;
+}
+
+@include breakpoint($small-screen-down) {
+  .section-small-screen-no-padding {
+    padding: 0;
+  }
+}

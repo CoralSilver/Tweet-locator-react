@@ -1,0 +1,24 @@
+// layouts/_main.scss
+
+// Flex properties to always insure a sticky footer
+// taken from https://github.com/philipwalton/solved-by-flexbox/
+// 2. Set `flex-shrink` to `0` to prevent some browsers from
+//    letting these items shrink to smaller than their content's default
+//     minimum size. See http://bit.ly/1Mn35US for details.
+// HTML structure
+// <body className="body">
+//   <header>…</header>
+//   <main className="main">…</main>
+//   <footer>…</footer>
+// </body>
+
+.main {
+  flex: 1 0 auto; /* 2 */
+  width: 100%;
+  &::after {
+  content: '\00a0'; /* &nbsp; */
+  display: block;
+  height: 0;
+  visibility: hidden;
+  }
+}

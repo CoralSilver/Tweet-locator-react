@@ -1,0 +1,19 @@
+// base/body.scss
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* 1, 3 */
+  position: relative;
+}
+
+// Flexbox property added to ensure a sticky footer
+// taken from https://github.com/philipwalton/solved-by-flexbox/
+// 1. Avoid the IE 10-11 `min-height` bug.
+// 3. Use `%` instead of `vh` since `vh` is buggy in older mobile Safari.
+// HTML structure
+// <body>
+//   <header className="header">…</header>
+//   <main className="main">…</main>
+//   <footer>…</footer>
+// </body>

@@ -1,0 +1,85 @@
+// utilities/_helpers.scss
+
+// Display/Positioning Classes
+
+
+// Positioning helper classes
+//
+// markup:
+// <div style="background-color: $light-teal; max-width: 25%;" className="{$modifiers}">{$modifiers}</div>
+//
+//sg-wrapper:
+// <div style="max-width: 50%; border: 1px solid gray; overflow: hidden;">
+//   <sg-wrapper-content/>
+// </div>
+//
+// .move-left - floats element left
+// .move-right - floats element right
+// .move-inline, .display-inline-block - displays inline-block
+// .make-block - displays block
+// .move-center  - aligns text center
+// .centered - centers element by setting display to block and margin to 0 auto.
+// .clear - clears left and right sides of element
+// .clearfix  - adds clearfix styles
+// .fixed-position - fixed positions element
+// .relative-position  - relative positions element (most useful for using absolute positioning on child element)
+// .vertically-centered  - vertically center an element inside a relatively positioned parent
+//
+// Styleguide 1.6.1.
+
+.move-left {
+  float: left;
+}
+
+.move-right {
+  float: right;
+}
+
+.move-inline {
+  display: inline-block;
+}
+
+.move-inline-block {
+  display: inline-block;
+}
+
+.make-block {
+  display: block;
+}
+
+.move-center {
+  text-align: center;
+}
+
+.centered {
+  display: block;
+  margin: 0 auto;
+}
+
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.fixed-position {
+  position: fixed;
+}
+
+.relative-position {
+  position: relative;
+}
+
+.absolute-position {
+  position: absolute;
+}
+
+.vertically-centered {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}

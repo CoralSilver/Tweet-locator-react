@@ -1,0 +1,332 @@
+//elements/_tables.scss
+
+// Tables
+//
+// Basic table without any classes added. All table headers above rows sholud be given ```scope="col"``` for accessibilty.
+// Column widths will be based on width of column cell contents.
+//
+// markup:
+//<table>
+//    <tbody>
+//    <tr>
+//      <th scope="col">Table Header 1</th><th scope="col">Table Header 2</th><th scope="col">Table Header 3</th>
+//    </tr>
+//    <tr>
+//      <td>Division 1</td><td>Division 2</td><td>Division 3</td>
+//    </tr>
+//    <tr>
+//      <td>Division 1</td><td>Division 2</td><td>Division 3</td>
+//    </tr>
+//    <tr>
+//      <td>Division 1</td><td>Division 2</td><td>Division 3</td>
+//    </tr>
+//  </tbody>
+//</table>
+
+
+table {
+  background-color: $white;
+  font-feature-settings: "kern", "liga", "tnum";
+  font-size: em(15);
+  max-width: 100%;
+  width: 100%;
+
+  th {
+    background-color: $table-header-color;
+    border-bottom: 1px solid $base-border-color;
+    font-weight: normal;
+    line-height: 1.3;
+    padding: $small-spacing;
+    text-align: left;
+    vertical-align: bottom;
+  }
+
+  td {
+    border-bottom: $base-border;
+    padding: $small-spacing;
+  }
+
+  tr,
+  td
+  {
+    vertical-align: middle;
+  }
+}
+
+// Table with cell padding
+//
+//  Table is given left/right padding on cells.  Include `justified-ends` class to remove left padding from first column and right padding from last column.
+//
+// markup:
+//<table className="table--cell-padding justified-ends">
+//    <tbody>
+//    <tr>
+//      <th scope="col">Table Header 1</th><th scope="col">Table Header 2</th><th scope="col">Table Header 3</th>
+//    </tr>
+//    <tr>
+//      <td>Division 1</td><td>Division 2</td><td>Division 3</td>
+//    </tr>
+//    <tr>
+//      <td>Division 1</td><td>Division 2</td><td>Division 3</td>
+//    </tr>
+//    <tr>
+//      <td>Division 1</td><td>Division 2</td><td>Division 3</td>
+//    </tr>
+//  </tbody>
+//</table>
+table {
+  .table--cell-padding {
+    th {
+      padding: $small-spacing;
+    }
+    td {
+      padding: $small-spacing;
+    }
+    &.justified-ends {
+      th {
+        &:first-child {
+          padding-left: 0;
+        }
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+      td {
+        &:first-child {
+          padding-left: 0;
+        }
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+    }
+  }
+}
+
+// Fixed Table
+//
+// Tables are given ```table-layout: fixed;```, so columns will be equal widths by default. Custom widths
+// can be applied to columns by giving the table headings percentage widths.
+//
+// markup:
+//<table className="table--fixed">
+//    <tbody>
+//    <tr>
+//      <th scope="col">Table Header 1</th><th scope="col">Table Header 2</th><th scope="col">Table Header 3</th>
+//    </tr>
+//    <tr>
+//      <td>Division 1</td><td>Division 2</td><td>Division 3</td>
+//    </tr>
+//    <tr>
+//      <td>Division 1</td><td>Division 2</td><td>Division 3</td>
+//    </tr>
+//    <tr>
+//      <td>Division 1</td><td>Division 2</td><td>Division 3</td>
+//    </tr>
+//  </tbody>
+//</table>
+
+
+.table--fixed {
+  table-layout: fixed;
+  width: 100%;
+}
+
+// Zebra Stripped Table
+//
+// markup:
+//<table className="table-striped">
+// <thead>
+//    <tr>
+//      <th scope="col">Table Header 1</th><th scope="col">Table Header 2</th><th scope="col">Table Header 3</th>
+//    </tr>
+// </thead>
+// <tbody>
+//    <tr>
+//      <td>Division 1</td><td>Division 2</td><td>Division 3</td>
+//    </tr>
+//    <tr>
+//      <td>Division 1</td><td>Division 2</td><td>Division 3</td>
+//    </tr>
+//    <tr>
+//      <td>Division 1</td><td>Division 2</td><td>Division 3</td>
+//    </tr>
+//  </tbody>
+// </table>
+
+.table--striped {
+  tbody tr:nth-child(odd) {
+    background-color: $base-background-color;
+  }
+}
+
+// Table with hover state on rows
+//
+// ```.table--hover``` – add class to table to give rows hover state. Hover state is applied to rows within ```<tbody>```.
+// Must place table headings within ```<thead>``` so that heading does not also get this hover style applied.
+// First and last child of ```<th>``` and ```<td>``` are given left or right padding. Width of columns is controlled by classes given to ```<th>```.
+//
+// Icons are inline images with alt text for accessibility. Here they are inserted to the right of the table data and given left margin with the class ```.td-icon-right```.  To add them to the left of table data and have
+//  a margin right use class ```.td-icon-left``` instead.
+//
+//  ```.last-column-right``` – adding this class to the table will align the text in the table headers and table data right.
+//
+// markup:
+//<table className="table-fixed rows-with-hover last-column-right">
+//  <thead>
+//    <tr><th className="table-names" scope="col">Name</th><th className="table-data-single centered-th" scope="col">Test Score</th><th className="table-data-single" scope="col">Remediation*</th>
+//    </tr>
+//  <thead>
+// <tbody>
+//  <tr>
+//    <td>Freiman, Allison</td><td className="center">58.7%<img src="assets/images/attention_2x.png" className="td-icon-right attention-icon" alt="attention!"></td><td>0:00<img src="assets/images/attention_2x.png" className="td-icon-right attention-icon" alt="attention!"></td>
+//  </tr>
+//  <tr>
+//    <td>Miller, Stephanie</td><td className="center">60.0%<img src="assets/images/attention_2x.png" className="td-icon-right attention-icon" alt="attention!"></td><td>0:36<img src="assets/images/attention_2x.png" className="td-icon-right attention-icon" alt="attention!"></td>
+//  </tr>
+//  <tr>
+//    <td>Salvador, Charlene</td><td className="center">62.7%<img src="assets/images/attention_2x.png" className="td-icon-right attention-icon" alt="attention!"></td><td>1:02<img src="assets/images/green-checkmark_2x.png" className="td-icon-right green-checkmark-icon" alt="OK"></td>
+//  </tr>
+//  <tr>
+//    <td>McGovern, Terrence</td><td className="center">64.0%<img src="assets/images/attention_2x.png" className="td-icon-right attention-icon" alt="attention!"></td><td>0:00<img src="assets/images/attention_2x.png" className="td-icon-right attention-icon" alt="attention!"></td>
+//  </tr>
+//  <tr>
+//    <td>Williams, Kelly Ann</td><td className="center">68.5%<img src="assets/images/green-checkmark_2x.png" className="td-icon-right green-checkmark-icon" alt="OK"></td><td>0:31<img src="assets/images/attention_2x.png" className="td-icon-right attention-icon" alt="attention!"></td>
+//  </tr>
+//  </tbody>
+//  </table>
+
+%invisible-header {
+  border-bottom: 0;
+  padding: 0;
+}
+
+table {
+  .centered-th {
+    text-align: center;
+  }
+  // use on inline image when placed to the right of table data
+  .td-icon-right {
+    margin-left: .5em;
+  }
+  // use on inline image when placed to the left of table data
+  .td-icon-left {
+    margin-right: .5em;
+  }
+}
+
+.table--hover {
+  >tbody>tr {
+    &:hover {
+      background-color: darken($base-table-color, 3%);
+    }
+  }
+}
+
+// .table--white {
+//   background-color: $white;
+// }
+
+// Table with last row having no border
+//
+//markup:
+//<table className="table--last-no-border">
+//<thead>
+//    <tr><th scope="col">Name</th><th scope="col">Description</th><th scope="col">Actions</th></tr>
+//  </thead>
+//  <tbody data-link="row" className="rowlink">
+//    <tr><td><a href="#">Link One</a></td><td>Table Data</td><td className="rowlink-skip"><a href="#">Action</a></td></tr>
+//    <tr><td><a href="#">Link Two</a></td><td>Table Data</td><td className="rowlink-skip"><a href="#">Action</a></td></tr>
+//    <tr><td><a href="#">Link Three</a></td><td>Table Data</td><td className="rowlink-skip"><a href="#">Action</a></td></tr>
+//  </tbody>
+//</table>
+
+.table--last-no-border {
+  tr:last-child td {
+    border-bottom: 0;
+  }
+}
+
+// Basic table without border on bottom of rows
+//
+// markup:
+//<table className="table--no-row-borders">
+//    <tbody>
+//    <tr>
+//      <th scope="col">Table Header 1</th><th scope="col">Table Header 2</th><th scope="col">Table Header 3</th>
+//    </tr>
+//    <tr>
+//      <td>Division 1</td><td>Division 2</td><td>Division 3</td>
+//    </tr>
+//    <tr>
+//      <td>Division 1</td><td>Division 2</td><td>Division 3</td>
+//    </tr>
+//    <tr>
+//      <td>Division 1</td><td>Division 2</td><td>Division 3</td>
+//    </tr>
+//  </tbody>
+//</table>
+
+.table--no-row-borders td {
+  border-bottom: 0;
+}
+
+// Add border around entire table (with cell padding class)
+//
+//markup:
+//<table className="table--bordered">
+//<thead>
+//    <tr><th scope="col">Name</th><th scope="col">Description</th><th scope="col">Actions</th></tr>
+//  </thead>
+//  <tbody data-link="row" className="rowlink">
+//    <tr><td><a href="#">Link One</a></td><td>Table Data</td><td className="rowlink-skip"><a href="#">Action</a></td></tr>
+//    <tr><td><a href="#">Link Two</a></td><td>Table Data</td><td className="rowlink-skip"><a href="#">Action</a></td></tr>
+//    <tr><td><a href="#">Link Three</a></td><td>Table Data</td><td className="rowlink-skip"><a href="#">Action</a></td></tr>
+//  </tbody>
+//</table>
+
+.table--bordered {
+  border: $base-border;
+  border-collapse: separate;
+  border-radius: $base-border-radius;
+}
+
+.table--bordered-cells {
+  td {
+    border: $base-border;
+  }
+}
+
+.table-bordered-th {
+  th {
+    border: $base-border;
+  }
+}
+
+.table__th--bold {
+  th {
+    font-weight: $bold;
+  }
+}
+
+.table__th--cell-empty {
+    color: lighten($black, 65%)
+}
+
+.table--break {
+  word-break: break-all;
+  // Non standard for webkit
+  word-break: break-word;
+  hyphens: auto;
+}
+
+.table--no-side-borders {
+  td:last-child,
+  th:last-child {
+    border-right: none;
+  }
+  td:first-child,
+  th:first-child {
+    border-left: none;
+  }
+}

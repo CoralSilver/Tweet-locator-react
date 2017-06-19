@@ -1,0 +1,27 @@
+@import '../shared/sass/base/variables';
+
+.main-container {
+    margin-top: 50px;
+    margin: {
+        left: auto;
+        right: auto;
+    } 
+    padding: $base-spacing;
+}
+
+.find-tweets-container {
+    align-items: center;
+    background: rgba(220, 220, 220, .3);
+    border: $base-border;
+    border-radius: $base-border-radius;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: $base-spacing;
+    > * {
+        margin: {
+            left: $base-spacing;
+            right: $base-spacing;
+        }
+    }
+}

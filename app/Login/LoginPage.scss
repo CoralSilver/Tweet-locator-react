@@ -1,0 +1,16 @@
+@import '../shared/sass/base/variables';
+
+.login-container {
+  background-color: $white;
+  border-radius: $base-border-radius;
+  display: flex;
+  flex-direction: column;
+  padding: $base-spacing * 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  &__image {
+    margin-bottom: $base-spacing;
+  }
+}

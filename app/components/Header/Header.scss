@@ -1,0 +1,25 @@
+@import '../../shared/sass/base/variables.scss';
+
+.header {
+  padding: $small-spacing;
+  border-bottom: $base-border;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
+  top: 0;
+  z-index: 20;
+  img {
+    width: auto;
+    height: 40px;
+  }
+  h1 {
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-left : $small-spacing;
+    margin-top: 0;
+  }
+}

@@ -1,0 +1,41 @@
+.flex-cols {
+  display: flex;
+  flex-wrap: wrap;
+
+  &--center {
+    justify-content: center;
+  }
+
+  &--space-around {
+    justify-content: space-around;
+  }
+
+  &__item-2 {
+    flex: 0 0 100% / 12 * 2;
+  }
+
+  &__item-3 {
+    flex: 0 0 100% / 12 * 3;
+  }
+
+  &__item-4 {
+    flex: 0 0 100% / 12 * 4;
+  }
+
+  &__item-6 {
+    flex: 0 0 100% / 12 * 6;
+  }
+
+  &__item-8 {
+    flex: 0 0 100% / 12 * 8;
+  }
+
+  &__item-9 {
+    flex: 0 0 100% / 12 * 9;
+  }
+
+  &__item-10 {
+    flex: 0 0 100% / 12 * 10;
+  }
+}
+

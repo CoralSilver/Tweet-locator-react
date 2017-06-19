@@ -1,0 +1,306 @@
+//elements/_typography.scss
+
+// Typography
+
+// Base body font
+//
+// markup:
+// <p>Nostrud Truffaut, Helvetica duis brunch cronut laboris next level. Biodiesel migas occaecat, anim mlkshk culpa ullamco banjo flannel street art consequat lomo quis church-key. Deep v messenger bag cillum, McSweeney's aliqua Neutra Austin polaroid letterpress ugh raw denim officia. Sustainable eu cronut pug, tilde Portland enim chambray synth you probably haven't heard of them chia paleo. Bicycle rights nesciunt selfies commodo, polaroid slow-carb tousled whatever hashtag. Dolore migas selvage mumblecore, biodiesel meditation 90's. Polaroid ullamco 8-bit vegan.</p>
+// <p>Tempor placeat, anim master cleanse narwhal put a bird on it. Retro sed Carles flexitarian. Quinoa Banksy jean shorts, tousled velit Austin cardigan sriracha Tumblr Helvetica farm-to-table plaid. Mlkshk velit cray, swag McSweeney's irure authentic Pinterest taxidermy mixtape Williamsburg drinking vinegar. Master cleanse velit bespoke Tumblr Brooklyn labore. Vinyl yr Helvetica Bushwick brunch post-ironic Vice, cliche semiotics wolf exercitation. Assumenda voluptate hashtag migas consequat shabby chic pug laboris quis wayfarers lo-fi.</p>
+//
+// p - Base body font is set at 100% on html and gradually decreased with viewport width.
+// At breakpoint($large-screen-down) it is set at 96%.
+// At @include breakpoint($small-screen-down) it is set at 94%.
+
+body {
+  font-feature-settings:"kern", "liga", "pnum";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $base-font-color;
+  font-family: $base-font-family;
+  font-size: 1rem;
+  line-height: $base-line-height;
+}
+
+// Base link
+//
+// markup:
+// <a {$modifiers}>Base link</a>
+//
+//  a        - base link
+// :focus   - focus, hover, active style
+
+a,
+p,
+span {
+  font-size: em(15);
+}
+
+a {
+  color: $action-color;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.1s linear;
+  &:active,
+  &:focus,
+  &:hover {
+    color: tint($action-color, 20%);
+  }
+}
+
+
+p {
+  margin: 0 0 $base-spacing/2;
+}
+
+// Headings
+//
+// markup:
+// <h1>Heading 1</h1>
+// <h2>Heading 2</h2>
+// <h3>Heading 3</h3>
+// <h4>Heading 4</h4>
+// <h5>Heading 5</h5>
+// <h6>Heading 6</h6>
+//
+// These are the base headings.  Other text tags can be made the same size by giving them the respective class.
+// ie using the h1 class will make an h4 tag the same size as using an h1 tag
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $base-heading-color;
+  font-family: $heading-font-family;
+  font-weight: $bold;
+  line-height: $heading-line-height;
+  margin: 0 0 $small-spacing;
+}
+
+h1, .h1 {
+  font-size: em(30);
+}
+
+h2, .h2 {
+  font-size: em(28);
+}
+
+h3, .h3 {
+  font-size: em(26);
+}
+
+h4, .h4 {
+  font-size: em(24);
+}
+
+h5, .h5 {
+  font-size: em(20);
+}
+
+h6, .h6 {
+  font-size: em(16);
+}
+
+
+small {
+  font-size: em(12);
+}
+
+b,
+strong {
+  // use bold font-face if available instead of 'font-weight: bold'
+  font-weight: $bold;
+}
+
+i,
+em {
+  // use italic font-face if available instead of 'font-style: italic'
+  font-style: italic;
+}
+
+// Custom styles
+
+// Larger Fonts
+//
+// For when slightly larger than normal body font is needed
+//
+// markup:
+// <p className="{$modifiers}">{$modifiers}</p>
+//
+// .text-larger                - Larger text
+
+// alter so user can only change certain properties
+@mixin text-larger($color: inherit, $font-size: em(18)) {
+  color: $color;
+  font-size: $font-size;
+}
+
+// Page Headings
+//
+// markup:
+// <h2 className="{$modifiers}">{$modifiers}</h2>
+//
+// .page-sm-heading-teal       - Larger text, teal color
+// .page-lg-heading           -  Even Larger text, purple color
+
+.page-sm-heading-teal {
+  @include text-larger($teal, em(22));
+  @include breakpoint($extra-small-screen-down) {
+    text-align: center !important;
+  }
+}
+
+.page-lg-heading {
+  color: $base-heading-color;
+  display: inline-block;
+  font-size: em(28);
+  font-weight: $bold;
+  margin-bottom: .2em;
+  @include breakpoint($small-phone-screen-down) {
+    display: block;
+  }
+  @include breakpoint($extra-small-screen-down) {
+    text-align: center;
+  }
+}
+
+// Alternative margin bottom
+//
+// markup:
+// <h2 className="{$modifiers}">{$modifiers}</h2>
+// <h2 className="{$modifiers}">{$modifiers}</h2>
+//
+// .text-larger-margin      - Gives a margin bottom of $base-spacing
+
+.text-larger-margin {
+  margin-bottom: $base-spacing;
+}
+
+.text-smaller-margin {
+  margin-bottom: $small-spacing / 2;
+}
+
+.no-margin-bottom {
+  margin-bottom: 0;
+}
+
+// Alternative link colors
+//
+// markup:
+// <a className="{$modifiers}">{$modifiers}</a>
+//
+// .link-base-color  - When you don't want a link to be given the default link color except on hover, focus.
+// .link-darker  - Use for links or unstyled buttons against a background color when needed to pass contrast tests
+
+.link-base-color {
+  color: $base-font-color;
+}
+
+.link-darker {
+  color: $action-color-dark;
+}
+
+
+// Alternate colored fonts
+//
+// markup:
+// <p className="{$modifiers}">{$modifiers}</p>
+//
+// .error                      - red to grab users attention that an error has occured. .alert and .attention also share this style.
+// .success                    - used for success messages
+
+.error, .alert, .attention {
+  color: $error;
+}
+
+.success {
+  color: $success;
+}
+
+// Normal weight text
+//
+// markup:
+// <h3 className="normal">Normal</h3>
+//
+// .normal                 - Can be added to any class or heading with font-weight bold, to make it normal weight
+
+.normal {
+  font-weight: normal;
+}
+
+.initial {
+  color: $base-font-color;
+}
+
+// indented text
+//
+// markup:
+// <p className="{$modifiers}">{$modifiers}</h2>
+//
+// .indented                 -  adds a margin left of $base-spacing
+// .indented-wide            -  adds a margin left of $base-spacing * 1.5
+
+.indented {
+  margin-left: $base-spacing;
+  &-wide {
+    margin-left: $base-spacing*1.5;
+  }
+}
+
+// Center text at mobile size
+//
+// markup:
+// <p className="mobile-center">Mobile Center</p>
+//
+// .mobile-center            -  Centers text at $small-screen-down
+
+.mobile-center {
+  @include breakpoint($small-screen-down) {
+    text-align: center;
+  }
+}
+
+// Left align text or button at mobile size
+//
+// markup:
+// <p>Text above with small margin bottom</p>
+// <button className="button {$modifiers}">className="{$modifiers}"</button>
+//
+// .mobile-left           -  Left aligns text or button at $small-screen-down
+// .mobile-left-top-margin    -  Left aligns text or button at $small-screen-down with top padding
+
+.mobile-left {
+  @include breakpoint($small-screen-down) {
+      text-align: left;
+      width: 100%;
+    &-top-margin {
+      margin-top: 1em;
+    }
+  }
+}
+
+.text-link-color {
+  color: $action-color;
+}
+
+.text-extra-mobile-spacing:not(:last-child) {
+    @include breakpoint($extra-small-screen-down) {
+      margin-bottom: 1em;
+    }
+}
+
+.white-link {
+  &:active,
+  &:focus,
+  &:hover {
+    color: $white;
+  }
+}
+
+section {
+  .text-section {
+    margin-bottom: $base-spacing;
+  }
+}

@@ -1,0 +1,43 @@
+// base/_breakpoints.scss
+
+//http://breakpoint-sass.com/
+//Examples:
+//// assume min-width (by default) if only a number
+  //$high-tide: 500px;
+// set min-width/max-width if both values are numbers
+  //$ex-presidents: 600px 800px;
+// if one value is a string, assume a feature/value pair
+  //$surfboard-width: max-width 1000px;
+// string tests together within parentheses, assume each item is a feature value pair
+  //$surfboard-height: (min-height 1000px) (orientation portrait);
+
+// Breakpoint/Media Query Variables
+//
+//  We use breakpoint-sass for media query breakpoints -- http://breakpoint-sass.com/
+//  Example @include breakpoint($large-screen-down) {}
+//
+// Styleguide 1.4
+
+//max-width media queries
+$extra-small-screen-down: max-width em(414);
+$small-phone-screen-down: max-width em(550);
+$small-screen-down: max-width em(767);
+$medium-screen-down: max-width em(991);
+$large-screen-down: max-width em(1199);
+$x-large-screen-down: max-width em(1280);
+
+//min-width media queries
+$extra-small-screen-up: em(415);
+$small-phone-screen-up: em(551);
+$small-screen-up: em(768);
+$medium-screen-up: em(992);
+$large-screen-up: em(1200);
+
+//min-max media query
+$small-phone-to-medium-screen: em(551) em(992);
+$small-screen-up-to-medium-screen: em(768) em(992);
+$small-screen-up-to-large-screen: em(768) em(1200);
+
+//max-min media query
+$large-to-small-screen: em(1199) em(769);
+$large-to-small-phone-screen: em(1199) em(550);

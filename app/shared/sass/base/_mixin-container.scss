@@ -1,0 +1,11 @@
+@mixin container($local-max-width: $max-width) {
+  max-width: $local-max-width;
+  margin: {
+    left: auto;
+    right: auto;
+  }
+  padding: 0 $base-spacing/2;
+  @include breakpoint($large-screen-up) {
+    padding: 0 $base-spacing;
+  }
+}

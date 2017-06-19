@@ -1,0 +1,13 @@
+.range {
+    &__input {
+        margin: {
+            left: 1em;
+            right: 1em;
+        } 
+    }
+
+    &__output {
+        display: inline-block;
+        width: 80px;
+    }
+}

@@ -1,0 +1,196 @@
+// elements/_lists.scss
+
+// Lists
+
+// Unordered List (Base)
+//
+// Unordered list without any class added
+//
+// markup:
+// <h4>Unordered List</h4>
+// <ul>
+//  <li>List item</li>
+//  <li>List item</li>
+//  <li>List item</li>
+// </ul>
+
+// Ordered List (Base)
+//
+// Unordered list without any class added
+//
+// markup:
+// <h4>Ordered List</h4>
+// <ol>
+//  <li>List item</li>
+//  <li>List item</li>
+//  <li>List item</li>
+// </ol>
+
+
+// Unordered List (Default)
+//
+// .default-ul  - default unordered list class
+//
+// markup:
+// <h4>Unordered List</h4>
+// <ul className="default-ul">
+//  <li>List item</li>
+//  <li>List item</li>
+//  <li>List item</li>
+// </ul>
+
+// Ordered List (Default)
+//
+// .default-ol   - default ordered list class
+//
+// markup:
+// <h4>Unordered List</h4>
+// <ol className="default-ol">
+//  <li>List item</li>
+//  <li>List item</li>
+//  <li>List item</li>
+// </ol>
+
+
+ul,
+ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  &.default-ul {
+    list-style-type: disc;
+    margin-bottom: $small-spacing;
+    padding-left: $base-spacing;
+    &-indented {
+      @include breakpoint($small-phone-screen-up) {
+        padding-left: $base-spacing;
+      }
+    }
+  }
+
+  &.default-ol {
+    list-style-type: decimal;
+    margin-bottom: $small-spacing;
+    padding-left: $base-spacing;
+    &-indented {
+      @include breakpoint($small-phone-screen-up) {
+        padding-left: $base-spacing;
+      }
+    }
+  }
+}
+
+// Unordered List (Bullet Inside)
+//
+// .bullet   - Changes disc to position inside, so it flush aligned left and increases margin bottom on its list items
+//
+// markup:
+// <h4>Unordered List</h4>
+// <ul className="bullet">
+//  <li>List item</li>
+//  <li>List item</li>
+//  <li>List item</li>
+// </ul>
+
+
+// Unordered List (Bullet inside indented)
+//
+// .bullet-indented   - Used with ```.bullet``` class increases left padding on bullet class
+//
+// markup:
+// <h4>Unordered List</h4>
+// <ol className="bullet bullet-indented">
+//  <li>List item</li>
+//  <li>List item</li>
+//  <li>List item</li>
+// </ol>
+//
+
+// Orange bullets
+//
+// .bullet-link   - Used with ```.bullet``` class when list items are links so bullet color matches links
+//
+// markup:
+// <h4>Unordered List</h4>
+// <ol className="bullet bullet-link">
+//  <li><a href="#">List item</a></li>
+//  <li><a href="#">List item</a></li>
+//  <li><a href="#">List item</a></li>
+// </ol>
+
+ul,
+ol {
+  &.bullet {
+    list-style-type: disc;
+    padding-left: 1em;
+    @include breakpoint($small-screen-down) {
+    text-align: left;
+    }
+    > li {
+      margin-bottom: .3em;
+    }
+    ul {
+      list-style-type: circle;
+      padding-left: 1em;
+    }
+    &-indented {
+      padding-left: $base-spacing;
+    }
+    &-link > li {
+      color: $action-color;
+    }
+  }
+}
+
+// Unordered/Ordered List (Extra spacing)
+//
+// markup:
+// <h4>Unordered List</h4>
+// <ul className="{$modifiers}">
+//  <li>List item</li>
+//  <li>List item</li>
+//  <li>List item</li>
+// </ul>
+//
+// .list-extra-spacing   - adds extra margin below each list item
+// .paragraph-spacing-bottom-list  - adds margin equal to margin bottom for paragraphs below last list item
+
+ul,
+ol {
+  &.list-extra-spacing {
+    > li {
+      margin-bottom: .5em;
+    }
+  }
+  &.paragraph-spacing-bottom-list {
+    margin-bottom: $base-spacing/2;
+  }
+}
+
+// Description List
+//
+// markup:
+// <dl>
+//  <dt>Firefox</dt>
+//  <dd>A free, open source, cross-platform, graphical web browser
+//      developed by the Mozilla Corporation and hundreds of volunteers.
+//  </dd>
+// </dl>
+//
+// The HTML ```<dl>``` Element encloses a list of pairs of terms and descriptions.
+// Common uses for this element are to implement a glossary or to display metadata.
+// Used with ```<dt>``` (defines terms/names) and ```<dd>``` (describes each term/name).
+
+dl {
+  margin-bottom: $small-spacing;
+
+  dt {
+    font-weight: bold;
+    margin-top: $small-spacing;
+  }
+
+  dd {
+    margin: 0;
+  }
+}
