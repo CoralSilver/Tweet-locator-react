@@ -1,16 +1,20 @@
 import React from 'react';
 import {
-    BrowserRouter as Router,
-    Route,
-    Redirect,
+  BrowserRouter as Router,
+  Route,
+  Redirect,
 } from 'react-router-dom';
 import * as LoginService from 'oauthio-web';
+import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
+import accessToken from '../../config';
 import Button from '../components/Button/Button';
 import Range from '../components/Range/Range';
 import Tweets from '../components/Tweets/Tweets';
 import Header from '../components/Header/Header';
+import Loading from '../components/Loading/Loading';
 import './Home.scss';
 
+const Map = ReactMapboxGl(accessToken);
 
 class Home extends React.Component {
   constructor(props) {
@@ -24,10 +28,10 @@ class Home extends React.Component {
     }
   }
 
-  componentWillMount = () => {
+  componentDidMount() {
     this.geoFindMe();
   };
-  
+
   geoFindMe = () => {
     if (!navigator.geolocation) {
       console.log("<p>Geolocation is not supported by your browser</p>");
@@ -41,21 +45,21 @@ class Home extends React.Component {
     console.log("Unable to retrieve your location");
   };
 
-  //TODO add Google map instead of displaying lat and long
   success = (pos) => {
     let crd = pos.coords;
-    let currentPosition = this.state;
     this.setState({ currentPosition: crd });
+
+    const lat = crd.latitude;
+    const lon = crd.longitude;
   }
 
   getTweets = () => {
     const twitter = LoginService.OAuth.create('twitter');
-    const currentPosition = this.state.currentPosition;
+    const { currentPosition, rangeValue } = this.state;
     const lat = currentPosition.latitude;
     const lon = currentPosition.longitude;
-    const range = this.state.rangeValue;
     const baseApi = `https://api.twitter.com/1.1/search/tweets.json?q=&geocode=`;
-    const apiParams = `${lat},${lon},${range}mi&result_type=recent`;
+    const apiParams = `${lat},${lon},${rangeValue}mi&result_type=recent`;
     const apiEndpoint = `${baseApi}${apiParams}`;
 
     const encodedAPIEndpoint = window.encodeURI(apiEndpoint);
@@ -78,7 +82,7 @@ class Home extends React.Component {
   }
 
   updateValue = (event) => {
-    this.setState({ rangeValue: event.target.value });
+    this.setState({ rangeValue: (event.target.value) * 1 });
   }
 
   logout = () => {
@@ -87,41 +91,60 @@ class Home extends React.Component {
   }
 
   render() {
-    let tweets = this.state.tweets;
+    const { tweets, currentPosition } = this.state;
     let position = this.state.currentPosition;
 
     if (this.state.redirectToReferrer) {
-        return (
-            <Redirect to='/' />
-        )
+      return (
+        <Redirect to='/' />
+      )
     }
 
     return (
       <div>
-        <Header onClick={this.logout}/>
-        <section className="main-container container">
+        <Header onClick={this.logout} />
+        <section className="main-container">
           {!position &&
-            <div className='find-tweets-container'>
-              <p>Finding your location...</p>
+            <div className='loading-container'>
+              <p>Finding your location</p>
+              <Loading />
             </div>
           }
-          {position &&
+          {
+            position &&
             <div className='find-tweets-container'>
-              <span>Latitude: {position.latitude.toFixed(5)}, Longitude: {position.longitude.toFixed(5)}</span>
-              <Range
-                updateValue={this.updateValue}
-                rangeValue={this.state.rangeValue} />
-              <Button
-                onClick={this.getTweets}
-                text={'Find nearby tweets'} />
+              <Map
+                center={[position.longitude, position.latitude]}  // Must be in longitude, latitude coordinate order
+                style="mapbox://styles/mapbox/streets-v9"
+                containerStyle={{
+                  height: "250px",
+                  flex: 2,
+                }}
+                zoom={[13]}
+              >
+                <Layer
+                  type="symbol"
+                  id="marker"
+                  layout={{ "icon-image": "marker-15" }}>
+                  <Feature coordinates={[position.longitude, position.latitude]} />
+                </Layer>
+              </Map>
+              <div className="controls">
+                <Range
+                  updateValue={this.updateValue}
+                  rangeValue={this.state.rangeValue} />
+                <Button
+                  onClick={this.getTweets}
+                  text={'Find nearby tweets'} />
+              </div>
             </div>
-          }
-          {(tweets.length > 0) &&
-            <Tweets
-              tweets={tweets}
-            />
           }
         </section>
+        {(tweets.length > 0) &&
+          <Tweets
+            tweets={tweets}
+          />
+        }
       </div>
     )
   }
