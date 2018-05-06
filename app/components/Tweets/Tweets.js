@@ -8,15 +8,15 @@ const Tweets = (props) => {
   let tweets = props.tweets;
 
   return (
-    <section>
+    <section className="tweets">
       {
         tweets.map((tweet, index) => {
-          let userURl = `https://twitter.com/${tweet.screenName}`;
-          let date = moment(tweet.createdAt).fromNow();
+          const userURl = `https://twitter.com/${tweet.screenName}`;
+          const date = moment(tweet.createdAt).fromNow();
 
           return (
             <div className='tweet-container' key={index}>
-              <img src={tweet.profileImg} className='tweet-container__profile-image' alt='profile image'/>
+              <img src={tweet.profileImg} className='tweet-container__profile-image' alt='profile'/>
               <span className='tweet-container__user-name'>
                 <a href={userURl} target='_blank'>
                   {tweet.screenName}
@@ -25,7 +25,7 @@ const Tweets = (props) => {
               <span className='tweet-container__date'>{date}</span>
               <div><Linkify properties={{target: '_blank'}}>{tweet.text}</Linkify></div>
               {tweet.img &&
-                <img src={tweet.img} alt='tweet image' className='tweet-container__media-image img--responsive'/>
+                <img src={tweet.img} alt='tweet' className='tweet-container__media-image img--responsive'/>
               }
             </div>
           )

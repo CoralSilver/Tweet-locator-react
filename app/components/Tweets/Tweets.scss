@@ -1,6 +1,11 @@
 @import '../../shared/sass/base/variables';
 @import '../../shared/sass/base/px-em';
 
+.tweets {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
 .tweet-container {
     background-color: $white;
     border: $base-border;
