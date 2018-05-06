@@ -2,26 +2,45 @@
 
 .main-container {
     margin-top: 50px;
-    margin: {
-        left: auto;
-        right: auto;
-    } 
-    padding: $base-spacing;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
 }
 
-.find-tweets-container {
+.loading-container {
     align-items: center;
     background: rgba(220, 220, 220, .3);
     border: $base-border;
     border-radius: $base-border-radius;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    padding: $base-spacing;
-    > * {
-        margin: {
-            left: $base-spacing;
-            right: $base-spacing;
-        }
+    flex-direction: column;
+    padding: 2em;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    p {
+        color: $action-color;
+        font-weight: 700;
+    }
+
+}
+
+.find-tweets-container {
+    align-items: stretch;
+    background: rgba(220, 220, 220, .3);
+    border: $base-border;
+    border-radius: $base-border-radius;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+    .controls {
+        display: flex;
+        flex-direction: column;
+        padding: 4em;
+        justify-content: space-around;
     }
 }
