@@ -13,7 +13,7 @@ const Range = (props) => {
 }
 
 Range.propTypes = {
-  rangeValue: PropTypes.number.isRequired,
+  rangeValue: PropTypes.string.isRequired,
   updateValue: PropTypes.func.isRequired
 };
 
