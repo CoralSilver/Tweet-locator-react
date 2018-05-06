@@ -48,12 +48,14 @@
   "dependencies": {
     "classnames": "2.2.5",
     "express": "^4.15.3",
+    "mapbox-gl": "0.44.0",
     "moment": "^2.18.1",
     "oauthio-web": "^0.6.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-google-maps": "^6.3.0",
     "react-linkify": "^0.2.1",
+    "react-mapbox-gl": "^3.8.0",
     "react-proptypes": "^1.0.0",
     "react-router-dom": "^4.1.1"
   }
