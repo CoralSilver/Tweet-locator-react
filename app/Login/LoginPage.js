@@ -11,9 +11,14 @@ import {
 import LocationMarker from 'shared/assets/location-marker.png';
 
 class LoginPage extends React.Component {
-    state = {
-        redirectToReferrer: false
+    constructor() {
+        super();
+        
+        this.state = {
+            redirectToReferrer: false
+        }
     }
+    
 
     login = () => {
         OAuth.initialize('7bIgDNbrQL4S2mH034k8dO4KxBE');
