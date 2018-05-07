@@ -17,18 +17,16 @@ class LoginPage extends React.Component {
         this.state = {
             redirectToReferrer: false
         }
+
+        OAuth.initialize('7bIgDNbrQL4S2mH034k8dO4KxBE');        
     }
-    
 
     login = () => {
-        OAuth.initialize('7bIgDNbrQL4S2mH034k8dO4KxBE');
-        //Example with Twitter with the cache option enabled
         OAuth.popup('twitter', { cache: true }).done((twitter) => {
-            //can now make API calls with `twitter`
             // redirect to home page
             this.setState({ redirectToReferrer: true });
         }).fail((err) => {
-            //todo when the OAuth flow failed
+            console.log('login failed')
         })
     }
 
